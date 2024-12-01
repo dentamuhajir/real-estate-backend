@@ -1,4 +1,4 @@
-package com.project.real_estate;
+package com.project.realestate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

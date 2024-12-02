@@ -1,6 +1,9 @@
 ## Spring Boot
     -> Install or Generate
         https://start.spring.io
+## Command Line Runner
+    -> Reference
+        https://www.geeksforgeeks.org/what-is-command-line-runner-interface-in-spring-boot/
 ## Hibernate
     -> Generated Value Strategy
         https://vladmihalcea.com/why-you-should-never-use-the-table-identifier-generator-with-jpa-and-hibernate/

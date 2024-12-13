@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ArticleService {
     public List<Article> getHeadline();
+
+    public void seedingArticle(Integer totalData);
 }

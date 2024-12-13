@@ -6,5 +6,5 @@ import java.util.List;
 
 
 public interface ArticleService {
-    public String getHeadline();
+    public List<Article> getHeadline();
 }

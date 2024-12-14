@@ -1,6 +1,7 @@
 package com.project.realestate.service.impl;
 
 import com.github.javafaker.Faker;
+import com.project.realestate.dto.article.HeadlineArticleResp;
 import com.project.realestate.model.Article;
 import com.project.realestate.repository.ArticleRepository;
 import com.project.realestate.service.ArticleService;
@@ -20,9 +21,19 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
     @Override
-    public List<Article> getHeadline() {
-        List<Article> headline = articleRepository.fetchHeadline();
-        return headline;
+    public List<HeadlineArticleResp> getHeadline() {
+        List<Article> articles = articleRepository.fetchHeadline();
+		List<HeadlineArticleResp> headlines = new ArrayList<>();
+
+		for(Article article : articles) {
+			HeadlineArticleResp headlineArticleResp = new HeadlineArticleResp();
+			headlineArticleResp.setId(article.getId());
+			headlineArticleResp.setTitle(article.getTitle());
+			headlineArticleResp.setCategory(article.getCategory());
+			headlineArticleResp.setPhoto(article.getPhoto());
+			headlines.add(headlineArticleResp);
+		}
+        return headlines;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.project.realestate.controller;
 
+import com.project.realestate.dto.article.HeadlineArticleResp;
 import com.project.realestate.model.Article;
 import com.project.realestate.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class ArticleController {
     private ArticleService articleService;
     @GetMapping(value = "/headline")
     public ResponseEntity<?> getHeadlineArticle() {
-        List<Article> getHeadline = articleService.getHeadline();
+        List<HeadlineArticleResp> getHeadline = articleService.getHeadline();
         return new ResponseEntity<>(getHeadline, HttpStatus.OK);
     }
     @GetMapping(value= "/seed/{totalData}")

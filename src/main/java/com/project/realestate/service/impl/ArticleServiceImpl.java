@@ -25,15 +25,15 @@ public class ArticleServiceImpl implements ArticleService {
     private ArticleRepository articleRepository;
     public List<HeadlineArticleResp> getHeadline() {
         List<Article> articles = articleRepository.fetchHeadline();
-		    List<HeadlineArticleResp> headlines = new ArrayList<>();
+        List<HeadlineArticleResp> headlines = new ArrayList<>();
 
         for(Article article : articles) {
-          HeadlineArticleResp headlineArticleResp = new HeadlineArticleResp();
-          headlineArticleResp.setId(article.getId());
-          headlineArticleResp.setTitle(article.getTitle());
-          headlineArticleResp.setCategory(article.getCategory());
-          headlineArticleResp.setPhoto(article.getPhoto());
-          headlines.add(headlineArticleResp);
+          headlines.add(HeadlineArticleResp.builder()
+                  .id(article.getId())
+                  .title(article.getTitle())
+                  .category(article.getCategory())
+                  .photo(article.getPhoto()).
+                  build());
         }
         return headlines;
     }

@@ -5,6 +5,7 @@ import com.project.realestate.dto.article.HeadlineArticleResp;
 
 import com.github.javafaker.Faker;
 
+import com.project.realestate.dto.response.GenericResponse;
 import com.project.realestate.model.Article;
 import com.project.realestate.repository.ArticleRepository;
 import com.project.realestate.service.ArticleService;
@@ -23,7 +24,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     private ArticleRepository articleRepository;
-    public List<HeadlineArticleResp> getHeadline() {
+    public GenericResponse<Object> getHeadline() {
         List<Article> articles = articleRepository.fetchHeadline();
         List<HeadlineArticleResp> headlines = new ArrayList<>();
 
@@ -35,7 +36,13 @@ public class ArticleServiceImpl implements ArticleService {
                   .photo(article.getPhoto()).
                   build());
         }
-        return headlines;
+
+        return GenericResponse.builder()
+                .status("SUCCESS")
+                .code(200)
+                .message("")
+                .data(headlines)
+                .build();
     }
 
     @Override

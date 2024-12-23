@@ -46,6 +46,14 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public void getListArticleByCategories() {
+        List<Article> articles = articleRepository.findAll();
+        for(Article article : articles){
+           System.out.println(article.getTitle());
+        }
+    }
+
+    @Override
     public void seedingArticle(Integer totalData) {
         Faker faker = new Faker();
 

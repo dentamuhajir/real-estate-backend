@@ -24,9 +24,17 @@ public class ArticleController {
         GenericResponse headline = articleService.getHeadline();
         return new ResponseEntity<>(headline, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/list")
+    public  ResponseEntity<?> getListArticle() {
+        articleService.getListArticleByCategories();
+        return new ResponseEntity<>("{}", HttpStatus.OK);
+    }
     @GetMapping(value= "/seed/{totalData}")
     public  ResponseEntity<?> seedingDummyArticles(@PathVariable Integer totalData) {
         articleService.seedingArticle(totalData);
         return new ResponseEntity<>("Seeding " + totalData + " dummy articles", HttpStatus.OK);
     }
+
+
 }

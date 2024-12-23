@@ -11,5 +11,6 @@ import java.util.List;
 public interface ArticleService {
 
     public GenericResponse getHeadline();
+    public void getListArticleByCategories();
     public void seedingArticle(Integer totalData);
 }

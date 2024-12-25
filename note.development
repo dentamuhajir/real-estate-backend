@@ -12,3 +12,7 @@
         mysql
     -> Create DB
         CREATE DATABASE real_estate;
+
+## Kill Port
+    -> sudo lsof -i tcp:8081
+    -> kill <pid>

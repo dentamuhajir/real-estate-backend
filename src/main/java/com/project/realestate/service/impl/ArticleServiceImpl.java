@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -48,8 +46,21 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void getListArticleByCategories() {
         List<Article> articles = articleRepository.findAll();
+        List<String> categories = new ArrayList<>();
+        Set<String> uniqueCategories = new HashSet<>();
         for(Article article : articles){
-           System.out.println(article.getTitle());
+            categories.add(article.getCategory());
+            uniqueCategories.add(article.getCategory());
+        }
+
+
+        for(int i =1 ; i < categories.size(); i++) {
+            System.out.println(categories.get(i));
+        }
+
+        String[] categoriesArray = uniqueCategories.toArray(new String[0]);
+        for (int i = 0; i < categoriesArray.length; i++) {
+            System.out.println("Category " + (i + 1) + ": " + categoriesArray[i]);
         }
     }
 

@@ -45,17 +45,22 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void getListArticleByCategories() {
+    public Map<String, List<Article>> getListArticleByCategories() {
         List<Article> articles = articleRepository.findAll();
         Set<String> categories = articles.stream().map(Article::getCategory).collect(Collectors.toSet());
+        Map<String, List<Article>> articlesByCategory = new HashMap<>();
 
         for(String category : categories) {
+            List<Article> articleList = new ArrayList<>();
             for(Article article : articles) {
                 if(article.getCategory().equals(category)) {
-                    //
+                    articleList.add(article);
                 }
+                articlesByCategory.put(category, articleList);
             }
         }
+
+        return articlesByCategory;
     }
 
     @Override

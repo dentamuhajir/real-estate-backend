@@ -6,11 +6,12 @@ import com.project.realestate.dto.response.GenericResponse;
 import com.project.realestate.model.Article;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface ArticleService {
 
     public GenericResponse getHeadline();
-    public void getListArticleByCategories();
+    public Map<String, List<Article>> getListArticleByCategories();
     public void seedingArticle(Integer totalData);
 }

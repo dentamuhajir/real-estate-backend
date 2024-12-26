@@ -16,3 +16,6 @@
 ## Kill Port
     -> sudo lsof -i tcp:8081
     -> kill <pid>
+
+## Java Stream Collect
+https://rameshfadatare.medium.com/java-stream-collect-method-with-examples-41c9010fa32c

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/article")
@@ -27,8 +28,8 @@ public class ArticleController {
 
     @GetMapping(value = "/list")
     public  ResponseEntity<?> getListArticle() {
-        articleService.getListArticleByCategories();
-        return new ResponseEntity<>("{}", HttpStatus.OK);
+        Map listArticle = articleService.getListArticleByCategories();
+        return new ResponseEntity<>(listArticle, HttpStatus.OK);
     }
     @GetMapping(value= "/seed/{totalData}")
     public  ResponseEntity<?> seedingDummyArticles(@PathVariable Integer totalData) {

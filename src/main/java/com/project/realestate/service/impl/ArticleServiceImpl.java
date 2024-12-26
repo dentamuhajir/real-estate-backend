@@ -47,35 +47,15 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void getListArticleByCategories() {
         List<Article> articles = articleRepository.findAll();
-        List<String> uniqueCategories = new ArrayList<>();
-
-        List<String> category = articles.stream().map(Article::getCategory).collect(Collectors.toList());
         Set<String> categories = articles.stream().map(Article::getCategory).collect(Collectors.toSet());
-        System.out.println(categories);
-        //Set<String> uniqueCategories = new HashSet<>();
-//        int i = 0;
-//        for(Article article : articles){
-//            //categories.add(article.getCategory());
-//
-//            //uniqueCategories.add(article.getCategory());
-//            if (!uniqueCategories.contains(article.getCategory())) {
-//                uniqueCategories.add(article.getCategory());
-//            }
-//
-////            if(uniqueCategories.contains(article.getCategory())) {
-////                System.out.println("category ke " + i++ );
-////
-////            }
-//        }
-//
-//        for(int j =1 ; j < uniqueCategories.size(); j++) {
-//            System.out.println(uniqueCategories.get(j));
-//        }
-//
-//        String[] categoriesArray = uniqueCategories.toArray(new String[0]);
-//        for (int i = 0; i < categoriesArray.length; i++) {
-//            System.out.println("Category " + (i + 1) + ": " + categoriesArray[i]);
-//        }
+
+        for(String category : categories) {
+            for(Article article : articles) {
+                if(article.getCategory().equals(category)) {
+                    //
+                }
+            }
+        }
     }
 
     @Override

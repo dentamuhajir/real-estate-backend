@@ -6,8 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Long> {
     @Query(value = "SELECT id, title, author, category, content_body, photo, photographer, published_date, is_published, created_at, updated_at FROM articles ORDER BY RAND() LIMIT 2", nativeQuery = true)
     List<Article> fetchHeadline();
+
+    Optional<Article> findById(Long id);
+
 }

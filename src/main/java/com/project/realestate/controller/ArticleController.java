@@ -32,11 +32,16 @@ public class ArticleController {
         GenericResponse listArticle = articleService.getListArticleByCategories();
         return new ResponseEntity<>(listArticle, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> getDetailArticle(@PathVariable Long id) {
+        GenericResponse detailArticle = articleService.getArticleById(id);
+        return new ResponseEntity<>(detailArticle, HttpStatus.OK);
+    }
     @GetMapping(value= "/seed/{totalData}")
     public  ResponseEntity<?> seedingDummyArticles(@PathVariable Integer totalData) {
         articleService.seedingArticle(totalData);
         return new ResponseEntity<>("Seeding " + totalData + " dummy articles", HttpStatus.OK);
     }
-
 
 }

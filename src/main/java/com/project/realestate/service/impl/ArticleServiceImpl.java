@@ -104,4 +104,14 @@ public class ArticleServiceImpl implements ArticleService {
           articleRepository.save(article);
         }
     }
+
+    @Override
+    public GenericResponse getArticleById(Long articleId) {
+        Optional<Article> article = articleRepository.findById(articleId);
+        return GenericResponse.builder()
+                .code(200)
+                .status("SUCCESS")
+                .data(article)
+                .build();
+    }
 }

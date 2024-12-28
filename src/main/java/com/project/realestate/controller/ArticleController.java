@@ -1,5 +1,6 @@
 package com.project.realestate.controller;
 
+import com.project.realestate.dto.article.ArticleByCategoryResp;
 import com.project.realestate.dto.article.HeadlineArticleResp;
 import com.project.realestate.dto.response.GenericResponse;
 import com.project.realestate.model.Article;
@@ -28,7 +29,7 @@ public class ArticleController {
 
     @GetMapping(value = "/list")
     public  ResponseEntity<?> getListArticle() {
-        Map listArticle = articleService.getListArticleByCategories();
+        List<ArticleByCategoryResp> listArticle = articleService.getListArticleByCategories();
         return new ResponseEntity<>(listArticle, HttpStatus.OK);
     }
     @GetMapping(value= "/seed/{totalData}")

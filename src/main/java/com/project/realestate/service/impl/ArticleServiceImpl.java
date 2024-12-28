@@ -1,6 +1,8 @@
 package com.project.realestate.service.impl;
 
 import com.github.javafaker.Faker;
+import com.project.realestate.dto.article.ArticleByCategoryResp;
+import com.project.realestate.dto.article.ArticleResp;
 import com.project.realestate.dto.article.HeadlineArticleResp;
 
 import com.github.javafaker.Faker;
@@ -45,22 +47,32 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Map<String, List<Article>> getListArticleByCategories() {
+    public List<ArticleByCategoryResp> getListArticleByCategories() {
         List<Article> articles = articleRepository.findAll();
         Set<String> categories = articles.stream().map(Article::getCategory).collect(Collectors.toSet());
-        Map<String, List<Article>> articlesByCategory = new HashMap<>();
+
+        List<ArticleByCategoryResp> articleByCategory = new ArrayList<>();
 
         for(String category : categories) {
-            List<Article> articleList = new ArrayList<>();
-            for(Article article : articles) {
-                if(article.getCategory().equals(category)) {
-                    articleList.add(article);
+            List<ArticleResp> articleList = new ArrayList<>();
+
+            for (Article article : articles) {
+                if (article.getCategory().equals(category)) {
+                    articleList.add(ArticleResp.builder()
+                            .id(article.getId())
+                            .title(article.getTitle())
+                            .category(article.getCategory())
+                            .photo(article.getPhoto())
+                            .build());
                 }
-                articlesByCategory.put(category, articleList);
             }
+            articleByCategory.add(ArticleByCategoryResp.builder()
+                    .category(category)
+                    .articleList(articleList)
+                    .build());
         }
 
-        return articlesByCategory;
+        return articleByCategory;
     }
 
     @Override

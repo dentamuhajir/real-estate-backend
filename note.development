@@ -18,4 +18,7 @@
     -> kill <pid>
 
 ## Java Stream Collect
-https://rameshfadatare.medium.com/java-stream-collect-method-with-examples-41c9010fa32c
+    -> https://rameshfadatare.medium.com/java-stream-collect-method-with-examples-41c9010fa32c
+
+## CORS (Cross-Origin)
+    -> https://stackoverflow.com/questions/49049312/cors-error-when-connecting-local-react-frontend-to-local-spring-boot-middleware

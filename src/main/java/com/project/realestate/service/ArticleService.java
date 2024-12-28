@@ -13,6 +13,6 @@ import java.util.Map;
 public interface ArticleService {
 
     public GenericResponse getHeadline();
-    public List<ArticleByCategoryResp> getListArticleByCategories();
+    public GenericResponse getListArticleByCategories();
     public void seedingArticle(Integer totalData);
 }

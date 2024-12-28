@@ -29,7 +29,7 @@ public class ArticleController {
 
     @GetMapping(value = "/list")
     public  ResponseEntity<?> getListArticle() {
-        List<ArticleByCategoryResp> listArticle = articleService.getListArticleByCategories();
+        GenericResponse listArticle = articleService.getListArticleByCategories();
         return new ResponseEntity<>(listArticle, HttpStatus.OK);
     }
     @GetMapping(value= "/seed/{totalData}")

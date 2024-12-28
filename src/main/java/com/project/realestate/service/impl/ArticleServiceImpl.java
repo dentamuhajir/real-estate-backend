@@ -25,7 +25,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     private ArticleRepository articleRepository;
-    public GenericResponse<Object> getHeadline() {
+    public GenericResponse getHeadline() {
         List<Article> articles = articleRepository.fetchHeadline();
         List<HeadlineArticleResp> headlines = new ArrayList<>();
 
@@ -47,7 +47,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<ArticleByCategoryResp> getListArticleByCategories() {
+    public GenericResponse getListArticleByCategories() {
         List<Article> articles = articleRepository.findAll();
         Set<String> categories = articles.stream().map(Article::getCategory).collect(Collectors.toSet());
 
@@ -71,8 +71,12 @@ public class ArticleServiceImpl implements ArticleService {
                     .articleList(articleList)
                     .build());
         }
-
-        return articleByCategory;
+        return GenericResponse.builder()
+                .status("SUCCESS")
+                .code(200)
+                .message("")
+                .data(articleByCategory)
+                .build();
     }
 
     @Override

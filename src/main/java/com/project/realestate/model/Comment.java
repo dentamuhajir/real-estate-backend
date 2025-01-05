@@ -1,6 +1,7 @@
 package com.project.realestate.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,6 +22,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "article_id", nullable = false)
+    @JsonIgnore
     private Article article;
 
 }

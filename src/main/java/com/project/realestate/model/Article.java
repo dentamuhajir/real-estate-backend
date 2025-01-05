@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -33,4 +34,7 @@ public class Article {
     private LocalDateTime createdAt;
     @Column(name="updated_at")
     private  LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "article")
+    private List<Comment> commentList;
 }

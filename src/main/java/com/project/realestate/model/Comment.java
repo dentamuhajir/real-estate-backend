@@ -15,7 +15,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name = "comments")
-    private long comments;
+    private String comments;
     @Column(name = "published_date")
     private LocalDateTime publishedDate;
 

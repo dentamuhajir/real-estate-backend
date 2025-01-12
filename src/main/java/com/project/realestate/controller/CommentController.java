@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("api/comment")
 public class CommentController {
@@ -17,8 +18,8 @@ public class CommentController {
     @PostMapping(value = "/post")
     public ResponseEntity<?> postComment(@RequestBody CommentPostReq commentPost) {
         System.out.println(commentPost);
-        commentService.postComment(commentPost);
-        return new ResponseEntity<>("Post comment successfully", HttpStatus.OK);
+        GenericResponse postComment = commentService.postComment(commentPost);
+        return new ResponseEntity<>(postComment, HttpStatus.OK);
     }
 
 }

@@ -21,12 +21,19 @@ public class CommentServiceImpl implements CommentService {
     private ArticleRepository articleRepository;
 
     @Override
-    public void postComment(@RequestBody CommentPostReq commentPost) {
+    public GenericResponse postComment(@RequestBody CommentPostReq commentPost) {
         Comment comment = new Comment();
         Article article = articleRepository.findById(commentPost.getArticleId()).get();
         System.out.println(article);
         comment.setComments(commentPost.getComments());
         comment.setArticle(article);
         commentRepository.save(comment);
+
+        return GenericResponse.builder()
+                .code(200)
+                .status("SUCCESS")
+                .message("")
+                .data("")
+                .build();
     }
 }

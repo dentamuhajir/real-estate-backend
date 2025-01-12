@@ -15,6 +15,5 @@ public interface ArticleService {
     public GenericResponse getHeadline();
     public GenericResponse getListArticleByCategories();
     public void seedingArticle(Integer totalData);
-
     public GenericResponse getArticleById(Long articleId);
 }

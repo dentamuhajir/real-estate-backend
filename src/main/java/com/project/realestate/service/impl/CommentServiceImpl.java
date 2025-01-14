@@ -23,7 +23,9 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public GenericResponse postComment(@RequestBody CommentPostReq commentPost) {
         Comment comment = new Comment();
-        Article article = articleRepository.findById(commentPost.getArticleId()).get();
+        Article article = articleRepository.findById(commentPost.getArticleId())
+                .orElseThrow(() -> new IllegalArgumentException("Article not found with ID: " + commentPost.getArticleId()));
+
         System.out.println(article);
         comment.setComments(commentPost.getComments());
         comment.setArticle(article);

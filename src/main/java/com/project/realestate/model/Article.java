@@ -3,6 +3,7 @@ package com.project.realestate.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "articles", schema = "public")
+@ToString(exclude = "commentList")
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

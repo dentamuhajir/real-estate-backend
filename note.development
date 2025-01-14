@@ -22,3 +22,6 @@
 
 ## CORS (Cross-Origin)
     -> https://stackoverflow.com/questions/49049312/cors-error-when-connecting-local-react-frontend-to-local-spring-boot-middleware
+
+## Undo last commit
+git reset --soft HEAD~1

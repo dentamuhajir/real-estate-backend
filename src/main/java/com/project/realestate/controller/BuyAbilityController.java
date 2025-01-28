@@ -16,9 +16,9 @@ public class BuyAbilityController {
     private BuyAbilityService buyAbilityService;
     @PostMapping
     public ResponseEntity<?> calculate(@RequestBody BuyAbilityReq bodyReq) {
-        buyAbilityService.calculate(bodyReq);
+        GenericResponse resp = buyAbilityService.calculate(bodyReq);
         //System.out.println(buyAbility);
-        return new ResponseEntity<>("passed", HttpStatus.OK);
+        return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 
 }

@@ -6,9 +6,11 @@ import com.project.realestate.service.BuyAbilityService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 @Service
 public class BuyAbilityServiceImpl implements BuyAbilityService {
+    public static final DecimalFormat df = new DecimalFormat( "#.00" );
     @Override
     public void calculate(BuyAbilityReq r) {
         Double propertyPrice = r.getPropertyPrice();
@@ -27,11 +29,11 @@ public class BuyAbilityServiceImpl implements BuyAbilityService {
         boolean isAffordable = monthlyEMI <= affordableEMI;
 
 
-        System.out.println("Loan Amount " + loanAmount);
+        System.out.println("Loan Amount " + df.format(loanAmount));
         System.out.println(" Get Annual Interest Rate" + r.getAnnualInterestRate());
         System.out.println("Monthly Interest Rate " + monthlyInterestRate );
         System.out.println("Monthly EMI" + monthlyEMI);
-        System.out.println("Affordable EMI" + affordableEMI);
+        System.out.println("Affordable EMI %f" + df.format(affordableEMI));
         System.out.println("is Affordable" + isAffordable);
         //System.out.println("console log from service" + buyAbility);
     }

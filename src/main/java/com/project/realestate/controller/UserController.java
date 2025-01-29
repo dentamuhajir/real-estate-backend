@@ -22,6 +22,8 @@ public class UserController {
 
     @PostMapping(value = "register")
     public ResponseEntity<?> register(@RequestBody RegisterReq bodyReq) {
+        userService.register(bodyReq);
+        //System.out.println(bodyReq);
         Map<String, String> response = new HashMap<>();
         response.put("message", "passed");
         return new ResponseEntity<>(response, HttpStatus.OK);

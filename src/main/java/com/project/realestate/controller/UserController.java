@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/user")
@@ -19,7 +22,9 @@ public class UserController {
 
     @PostMapping(value = "register")
     public ResponseEntity<?> register(@RequestBody RegisterReq bodyReq) {
-        return new ResponseEntity<>("", HttpStatus.OK);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "passed");
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

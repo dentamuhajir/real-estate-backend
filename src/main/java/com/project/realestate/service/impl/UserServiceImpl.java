@@ -32,13 +32,18 @@ public class UserServiceImpl implements UserService {
                     .message("Password does not match")
                     .build();
         }
+        // Create Password Validation Helper / utils
+        User user = new User();
+        user.setFullName(req.getFullName());
+        user.setEmail(req.getEmail());
+        user.setAddress(req.getAddress());
+        user.setPassword(req.getPassword());
+        userRepository.save(user);
 
         return GenericResponse.builder()
                 .code(200)
-                .status("SUCCESS")
-                .message("")
-                .data("")
+                .status("Success")
+                .message("Data register saved successfully")
                 .build();
-
     }
 }

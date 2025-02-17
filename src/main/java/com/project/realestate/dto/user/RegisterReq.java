@@ -1,6 +1,5 @@
 package com.project.realestate.dto.user;
 
-import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
 

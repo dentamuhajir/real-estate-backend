@@ -2,6 +2,7 @@ package com.project.realestate.controller;
 
 
 import com.project.realestate.dto.response.GenericResponse;
+import com.project.realestate.dto.user.ImportReq;
 import com.project.realestate.dto.user.RegisterReq;
 import com.project.realestate.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PostMapping(value = "import")
+//    public ResponseEntity<Object> uploadFile(@ModelAttribute ImportReq request, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<Object> uploadFile(
+            @RequestParam("file") MultipartFile file,
+            @RequestParam("name") String name) {
+        System.out.println(file);
+        System.out.println(name);
+        //System.out.println(request.getId());
+        return null;
+    }
+
     @PostMapping(value = "register")
-    public ResponseEntity<?> register(@ModelAttribute RegisterReq bodyReq, @RequestParam("idCard")MultipartFile file) {
+    public ResponseEntity<?> register(@ModelAttribute RegisterReq bodyReq, @RequestParam("idCard") MultipartFile file) {
         //GenericResponse resp = userService.register(bodyReq);
 
         System.out.println("Username: " + bodyReq.getFullName());

@@ -29,6 +29,8 @@ public class UserController {
         return null;
     }
 
+
+
     @PostMapping(value = "register")
     public ResponseEntity<?> register(@ModelAttribute RegisterReq bodyReq, @RequestParam("idCard") MultipartFile file) {
         //GenericResponse resp = userService.register(bodyReq);

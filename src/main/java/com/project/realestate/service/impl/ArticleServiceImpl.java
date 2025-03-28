@@ -8,6 +8,7 @@ import com.project.realestate.dto.article.HeadlineArticleResp;
 import com.github.javafaker.Faker;
 
 import com.project.realestate.dto.response.GenericResponse;
+import com.project.realestate.exception.GeneralException;
 import com.project.realestate.model.Article;
 import com.project.realestate.repository.ArticleRepository;
 import com.project.realestate.service.ArticleService;
@@ -108,6 +109,12 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public GenericResponse getArticleById(Long articleId) {
         Optional<Article> article = articleRepository.findById(articleId);
+
+        if(article.isEmpty()){
+            System.out.println("here");
+            throw new GeneralException(404, "Article id not found");
+        }
+
         return GenericResponse.builder()
                 .code(200)
                 .status("SUCCESS")

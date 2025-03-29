@@ -111,7 +111,6 @@ public class ArticleServiceImpl implements ArticleService {
         Optional<Article> article = articleRepository.findById(articleId);
 
         if(article.isEmpty()){
-            System.out.println("here");
             throw new GeneralException(404, "Article id not found");
         }
 
@@ -119,6 +118,20 @@ public class ArticleServiceImpl implements ArticleService {
                 .code(200)
                 .status("SUCCESS")
                 .data(article)
+                .build();
+    }
+
+    @Override
+    public GenericResponse delete(Long id) {
+        if(!articleRepository.existsById(id)){
+            throw new GeneralException(404,"Article not found");
+        }
+
+        articleRepository.deleteById(id);
+        return GenericResponse.builder()
+                .code(200)
+                .status("SUCCESS")
+                .message("Article is successfully deleted")
                 .build();
     }
 }

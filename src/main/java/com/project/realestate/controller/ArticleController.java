@@ -33,6 +33,7 @@ public class ArticleController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getDetailArticle(@PathVariable Long id) {
+        System.out.println("here test =====================================");
         GenericResponse detailArticle = articleService.getArticleById(id);
         return new ResponseEntity<>(detailArticle, HttpStatus.OK);
     }
@@ -40,6 +41,12 @@ public class ArticleController {
     public  ResponseEntity<?> seedingDummyArticles(@PathVariable Integer totalData) {
         articleService.seedingArticle(totalData);
         return new ResponseEntity<>("Seeding " + totalData + " dummy articles", HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "delete/{id}")
+    public ResponseEntity deleteArticle(@PathVariable Long id) {
+        GenericResponse response = articleService.delete(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

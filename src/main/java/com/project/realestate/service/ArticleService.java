@@ -16,4 +16,7 @@ public interface ArticleService {
     public GenericResponse getListArticleByCategories();
     public void seedingArticle(Integer totalData);
     public GenericResponse getArticleById(Long articleId);
+
+    public GenericResponse delete(Long id);
+
 }

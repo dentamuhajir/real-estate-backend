@@ -31,6 +31,9 @@ git reset --soft HEAD~1
 ## JWT Auth Token
     https://www.youtube.com/watch?v=dFzvVoS-sRE
     https://www.youtube.com/watch?v=RnZmeczS_DI
+## Swagger
+    mvn https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui/2.8.6
+    access http://localhost:8080/swagger-ui.html
 
 ## Run Spring Boot
     mvn spring-boot:run

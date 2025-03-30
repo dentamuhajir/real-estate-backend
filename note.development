@@ -37,3 +37,5 @@ git reset --soft HEAD~1
 
 ## Run Spring Boot
     mvn spring-boot:run
+    mvn clean package
+    mvn dependency:tree

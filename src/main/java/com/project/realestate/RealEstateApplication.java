@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -49,6 +50,12 @@ public class RealEstateApplication implements CommandLineRunner {
 	}
 
 	public static void main(String[] args) {
+		// check if the logs directory exists, if not create it
+		File logDir = new File("logs");
+		if (!logDir.exists()) {
+			logDir.mkdirs();
+		}
+
 		SpringApplication.run(RealEstateApplication.class, args);
 	}
 
